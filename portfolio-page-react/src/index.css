@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+body {
+  font-family: "Roboto";
+  color:rgb(41, 41, 41);
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  min-height: 100vh; /* Ensures full viewport height */
+
+}
+
+.wrapper {
+  width:800px;
+  margin:0 auto;
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.bottom-container {
+  display:flex;
+}
+
+.left-bottom-container {
+  max-width:250px;
+}
+
+.left-bottom-container {
+  max-width:250px;
+}
