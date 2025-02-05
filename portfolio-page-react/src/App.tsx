@@ -9,10 +9,10 @@ function App() {
 
 <div className="left-container">
 
-<h1 className='text-2xl'>Hi, I'm Rene, a front-end web developer specialized<br/>in JavaScript / React.</h1>
+<h1 className='text-3xl'>Hi, I'm Rene, a front-end web developer specialized in JavaScript and React.</h1>
 
 <div className="left-bottom-container mr-10 text-center">
-     <Link to='/project'><button className='bg-blue-500 px-6 py-3 rounded-2xl text-white font-bold w-sm'>Click to see my latest phone web shop project!<br/><small>(Built with ReactJS and Tailwind)</small></button></Link>
+     <Link to='/project'><button className='bg-blue-500 px-6 py-3 rounded-2xl text-white font-bold w-sm'>Click to see my latest webshop project!<br/><small>(Built with ReactJS and Tailwind)</small></button></Link>
 </div>
 </div>
         <div className="bottom-container">

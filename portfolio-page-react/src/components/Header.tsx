@@ -1,3 +1,5 @@
+import { Link } from "react-router"
+
 export default function Header() {
     return(
         <>
@@ -8,9 +10,9 @@ export default function Header() {
         <h1 className='text-3xl mr-9'>Phone webshop</h1>
             <nav>
                 <ul>
-                    <li><a href="">Back to portfolio</a></li>
-                    <li><a href="">Phones</a></li>
-                    <li><a href="">Tablets</a></li>
+                    <li><Link to='/'>Back to portfolio</Link></li>
+                    <li><Link to='/favorites'>Favorites</Link></li>
+                    <li><Link to='/checkout-1'>Shopping Cart</Link></li>
                 </ul>
             </nav>
             </div>
