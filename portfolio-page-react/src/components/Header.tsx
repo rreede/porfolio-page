@@ -1,9 +1,6 @@
 import { Link } from "react-router";
 
 export default function Header() {
-    const toggleMenu = () => {
-        document.querySelector('.nav-links').classList.toggle('nav-link-active');
-    };
 
     return (
         <>
@@ -18,7 +15,7 @@ export default function Header() {
                                 <li><Link to='/favorites'>Favorites</Link></li>
                                 <li><Link to='/project/checkout-1'>Shopping Cart</Link></li>
                             </ul>
-                            <div className="menu-burger" onClick={toggleMenu}>
+                            <div className="menu-burger">
                                 <div className="burger-bar"></div>
                                 <div className="burger-bar"></div>
                                 <div className="burger-bar"></div>

@@ -1,4 +1,7 @@
-const productList = [
+import { Product } from "./ProductView";  // Import the Product interface correctly as a named export
+
+
+const productList: Product[] = [
     {
         id:0,
         name:'Iphone 16',

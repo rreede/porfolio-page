@@ -1,58 +1,78 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router";
 import Header from "./Header";
-import Footer from "./Footer";
-import productList from "./productsList";
+import productList from "./productsList"; // Make sure productList is correctly imported
+
+export interface Product {
+    id: number;
+    name: string;
+    price: number;
+    img: string[];  // Assuming it's an array
+    description: string;
+}
+
+interface CartItem {
+    id: number;
+    quantity: number;
+}
+
+const getCartFromStorage = (): CartItem[] => {
+    try {
+        return JSON.parse(localStorage.getItem("shopping-cart") || "[]") as CartItem[];
+    } catch {
+        return [];
+    }
+};
+
+const getFavoritesFromStorage = (): number[] => {
+    try {
+        return JSON.parse(localStorage.getItem("favorite-products") || "[]") as number[];
+    } catch {
+        return [];
+    }
+};
 
 export default function ProductView() {
-    const id = Number(useParams().id);
-    if (isNaN(id)) return <div>Invalid product ID!</div>;
+    const { id } = useParams<{ id: string }>();
+    const productId = Number(id);
+    
+    if (isNaN(productId)) return <div>Invalid product ID!</div>;
 
-    const product = productList.find((product) => product.id === id);
+    const product = productList.find((p) => p.id === productId);
     if (!product) return <div>Product not found!</div>;
 
-    // Retrieve cart from localStorage or initialize an empty array
-    const [cart, setCart] = useState(() => {
-        const savedCart = JSON.parse(localStorage.getItem("shopping-cart") || "[]");
-        return savedCart;
-    });
+    const [cart, setCart] = useState<CartItem[]>(getCartFromStorage());
+    const currentItem = cart.find((item) => item.id === productId);
+    const [quantity, setQuantity] = useState<number>(currentItem ? currentItem.quantity : 1);
 
-    // Find current product quantity in the cart, default to 1 if not found
-    const currentItem = cart.find((item) => item.id === id);
-    const [quantity, setQuantity] = useState(currentItem ? currentItem.quantity : 1);
-
-    // Handle quantity change in the input field
-    const handleQuantityChange = (event) => {
-        const value = Math.max(1, parseInt(event.target.value)); // Ensuring minimum of 1
+    const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = Math.max(1, parseInt(event.target.value) || 1); 
         setQuantity(value);
     };
 
     const addToFavorites = () => {
-        const favorites = JSON.parse(localStorage.getItem("favorite-products") || "[]");
-        if (!favorites.includes(id)) {
-            localStorage.setItem("favorite-products", JSON.stringify([...favorites, id]));
+        const favorites = getFavoritesFromStorage();
+        if (!favorites.includes(productId)) {
+            localStorage.setItem("favorite-products", JSON.stringify([...favorites, productId]));
         }
         alert(`Added ${product.name} to favorites!`);
     };
 
     const addToCart = () => {
-        // Add the selected product to the cart with the specified quantity
         setCart((prevCart) => {
             let updatedCart = [...prevCart];
-            const existingItem = updatedCart.find((item) => item.id === id);
+            const existingItem = updatedCart.find((item) => item.id === productId);
 
             if (existingItem) {
-                // If product exists, update the quantity
                 existingItem.quantity += quantity;
             } else {
-                // If product doesn't exist, add a new entry
-                updatedCart.push({ id, quantity });
+                updatedCart.push({ id: productId, quantity });
             }
 
-            // Save updated cart to localStorage
             localStorage.setItem("shopping-cart", JSON.stringify(updatedCart));
             return updatedCart;
         });
+
         alert(`Added ${quantity} of ${product.name} to shopping cart!`);
     };
 
@@ -76,8 +96,8 @@ export default function ProductView() {
                         <input
                             type="number"
                             min="1"
-                            value={quantity}  // Controlled input based on state
-                            onChange={handleQuantityChange} // Update state when the input changes
+                            value={quantity}
+                            onChange={handleQuantityChange}
                             className="w-16 border p-2 text-center rounded-md border-gray-300"
                         />
                     </div>
@@ -92,7 +112,6 @@ export default function ProductView() {
                     </div>
                 </div>
             </div>
-
         </>
     );
 }
