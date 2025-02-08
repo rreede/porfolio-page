@@ -75,6 +75,10 @@ nav ul {
   height:26px;
 }
 
+nav a:hover {
+  color:rgb(78, 210, 78);
+}
+
 .nav-link-active {
   background:url('close_24dp_434343_FILL0_wght400_GRAD0_opsz24.svg');
   width:26px;

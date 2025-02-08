@@ -9,6 +9,7 @@ import Favorites from './components/Favorites.tsx';
 import CheckoutView1 from './components/Checkout-view-1.tsx';
 import CheckoutView2 from './components/Checkout-view-2.tsx';
 import CheckoutView3 from './components/Checkout-view-3.tsx';
+import CheckoutView4 from './components/Checkout-view-4.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="project/checkout-1" element={<CheckoutView1/>}/>
           <Route path="project/checkout-2" element={<CheckoutView2/>}/>
           <Route path="project/checkout-3" element={<CheckoutView3/>}/>
+          <Route path="project/checkout-4" element={<CheckoutView4/>}/>
         </Routes>
   </BrowserRouter>
   </StrictMode>,
