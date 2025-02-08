@@ -19,52 +19,69 @@ export default function Main() {
         }
     };
 
-    return (
-        <div className="wrapper relative px-4 max-w-4xl mx-auto">
-            {/* Product Container */}
-            <div className="overflow-hidden">
-                <div 
-                    className="flex transition-transform duration-300"
-                    style={{ transform: `translateX(-${(index * 100) / visibleProducts}%)`, width: `${(totalProducts / visibleProducts) * 100}%` }}
-                >
-                    {productList.map((product) => (
-                        <div key={product.id} className="w-1/3 px-2 text-center bg-white shadow-lg rounded-lg p-4">
-                            <img className="w-full object-cover rounded-md" src={`/${product.img[0]}`} alt={product.name} />
-                            <div className="product-info mt-5">
-                                <strong className="block text-lg">{product.name}</strong>
-                                <span className="text-gray-700">{product.price} $</span>
-                                <Link to={`product/${product.id}`}>
-                                    <button className="bg-blue-500 rounded-md mt-3 px-6 py-3 text-white w-full">
-                                        See more
-                                    </button>
-                                </Link>
-                                <button 
-                                    className="mt-3 bg-amber-200 px-6 py-3 rounded-md w-full"
-                                    onClick={() => alert(`${product.id}`)}
-                                >
-                                    Add to favorites
-                                </button>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+    const addToFavorites = (id: number) => {
+        const favorites = JSON.parse(localStorage.getItem('favorite-products') || "[]");
+        if (!favorites.includes(id)) {
+            favorites.push(id);
+            localStorage.setItem('favorite-products', JSON.stringify(favorites));
+        }
+    };
 
-            {/* Left & Right Arrows */}
-            <button 
-                onClick={prevSlide} 
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
-                disabled={index === 0}
-            >
-                ◀
-            </button>
-            <button 
-                onClick={nextSlide} 
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
-                disabled={index >= totalProducts - visibleProducts}
-            >
-                ▶
-            </button>
+    return (
+        <div className="container px-4 max-w-4xl mx-auto flex-wrap">
+<h1 className="block mb-4 text-xl ml-7 font-bold">⭐ Popular products</h1>
+<div className="wrapper relative">
+                {/* Product Container */}
+                <div className="overflow-hidden">
+                    <div 
+                        className="flex transition-transform duration-300"
+                        style={{ 
+                            transform: `translateX(-${(index * 100) / visibleProducts}%)`,
+                            width: `${(totalProducts / visibleProducts) * 100}%`
+                        }}
+                    >
+                        {productList.map((product) => (
+                            <div key={product.id} className="w-1/3 px-2 text-center bg-white shadow-lg rounded-lg p-4">
+                                <img className="w-full object-cover rounded-md product-img-carousel" src={`/${product.img[0]}`} alt={product.name} />
+                                <div className="product-info mt-5">
+                                    <strong className="block text-lg">{product.name}</strong>
+                                    <span className="text-gray-700">{product.price} $</span>
+                                    <Link to={`product/${product.id}`}>
+                                        <button className="bg-blue-500 rounded-md mt-3 px-6 py-3 text-white w-full">
+                                            See more
+                                        </button>
+                                    </Link>
+                                    <button 
+                                        className="mt-3 bg-amber-200 px-6 py-3 rounded-md w-full"
+                                        onClick={() =>  {
+                                            addToFavorites(product.id);
+                                            alert(`Product ${product.id} added to favorites`);
+                                        }}
+                                    >
+                                        Add to favorites
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Left & Right Arrows */}
+                <button 
+                    onClick={prevSlide} 
+                    className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
+                    disabled={index === 0}
+                >
+                    ◀
+                </button>
+                <button 
+                    onClick={nextSlide} 
+                    className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
+                    disabled={index >= totalProducts - visibleProducts}
+                >
+                    ▶
+                </button>
+            </div>
         </div>
     );
 }

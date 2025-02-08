@@ -5,6 +5,10 @@ import './index.css'
 import App from './App.tsx'
 import Project from './components/Project.tsx';
 import ProductView from './components/ProductView.tsx';
+import Favorites from './components/Favorites.tsx';
+import CheckoutView1 from './components/Checkout-view-1.tsx';
+import CheckoutView2 from './components/Checkout-view-2.tsx';
+import CheckoutView3 from './components/Checkout-view-3.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -12,7 +16,11 @@ createRoot(document.getElementById('root')!).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/project" element={<Project />} />
-          <Route path="/product/:id" element={<ProductView/>}/>
+          <Route path="project/product/:id" element={<ProductView/>}/>
+          <Route path="/favorites" element={<Favorites/>}/>
+          <Route path="/checkout-1" element={<CheckoutView1/>}/>
+          <Route path="/checkout-2" element={<CheckoutView2/>}/>
+          <Route path="/checkout-3" element={<CheckoutView3/>}/>
         </Routes>
   </BrowserRouter>
   </StrictMode>,
