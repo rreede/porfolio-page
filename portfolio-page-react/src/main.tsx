@@ -18,9 +18,9 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/project" element={<Project />} />
           <Route path="project/product/:id" element={<ProductView/>}/>
           <Route path="/favorites" element={<Favorites/>}/>
-          <Route path="/checkout-1" element={<CheckoutView1/>}/>
-          <Route path="/checkout-2" element={<CheckoutView2/>}/>
-          <Route path="/checkout-3" element={<CheckoutView3/>}/>
+          <Route path="project/checkout-1" element={<CheckoutView1/>}/>
+          <Route path="project/checkout-2" element={<CheckoutView2/>}/>
+          <Route path="project/checkout-3" element={<CheckoutView3/>}/>
         </Routes>
   </BrowserRouter>
   </StrictMode>,

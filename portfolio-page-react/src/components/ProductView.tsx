@@ -78,7 +78,7 @@ export default function ProductView() {
                             min="1"
                             value={quantity}  // Controlled input based on state
                             onChange={handleQuantityChange} // Update state when the input changes
-                            className="w-16 border p-2 text-center"
+                            className="w-16 border p-2 text-center rounded-md border-gray-300"
                         />
                     </div>
 
@@ -92,7 +92,7 @@ export default function ProductView() {
                     </div>
                 </div>
             </div>
-            <Footer />
+
         </>
     );
 }

@@ -81,6 +81,11 @@ nav ul {
   height:26px;
 }
 
+.shopping-cart-img-checkout {
+  height: 100px;
+  object-fit: contain;
+}
+
 @media screen and (max-width: 790px) {
   
   .wrapper {
@@ -130,4 +135,13 @@ nav ul {
   gap:1rem;
 
 }
+
+.nav-links {
+  display: none;
+}
+
+.menu-burger {
+  display: block;
+}
+
 }

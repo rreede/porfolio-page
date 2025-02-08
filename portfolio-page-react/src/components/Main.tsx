@@ -47,10 +47,6 @@ export default function Main() {
                                     <strong className="block text-lg">{product.name}</strong>
                                     <span className="text-gray-700">{product.price} $</span>
                                     <Link to={`product/${product.id}`}>
-                                        <button className="bg-blue-500 rounded-md mt-3 px-6 py-3 text-white w-full">
-                                            See more
-                                        </button>
-                                    </Link>
                                     <button 
                                         className="mt-3 bg-amber-200 px-6 py-3 rounded-md w-full"
                                         onClick={() =>  {
@@ -60,6 +56,11 @@ export default function Main() {
                                     >
                                         Add to favorites
                                     </button>
+                                        <button className="bg-blue-500 rounded-md mt-3 px-6 py-3 text-white w-full">
+                                            See more
+                                        </button>
+                                    </Link>
+                                   
                                 </div>
                             </div>
                         ))}
