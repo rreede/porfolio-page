@@ -3,6 +3,17 @@
 @import "slick-carousel/slick/slick-theme.css";
 
 body {
+  max-width:100%;
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Include padding and border in width/height calculations */
+}
+
+body {
   font-family: "Roboto";
   color:rgb(41, 41, 41);
 
@@ -13,19 +24,21 @@ body {
     font-family: "Roboto";
     color:rgb(41, 41, 41);
     display:flex;
+    max-width:100%;
     justify-content: center;
     align-items:center;
     min-height: 100vh; /* Ensures full viewport height */
 }
 
 .wrapper {
-  width:800px;
+  max-width:800px;
   margin:0 auto;
   display:flex;
 }
 
 .bottom-container {
   display:flex;
+  width:100%;
 }
 
 .product-view-img {
@@ -37,6 +50,8 @@ body {
   display:flex;
   flex-wrap:wrap;
   justify-content: space-between;
+  width: 100%;  /* Ensure it takes up the full width */
+  max-width: 100%;  /* Prevent overflow */
 }
 
 .left-bottom-container {
@@ -90,20 +105,52 @@ nav a:hover {
   object-fit: contain;
 }
 
-@media screen and (max-width: 790px) {
+@media screen and (max-width: 800px) {
+  .portfolio-page-body {
+    font-family: "Roboto";
+    color:rgb(41, 41, 41);
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction: column;
+    max-width:100%;
+    padding:1rem;
+    justify-content: center;
+    align-items:center;
+    min-height: initial; /* Ensures full viewport height */
+  }
+
+main {
+  display:flex;
+  flex-direction:column;
+}
+
+  .links {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+  }
+
+  .github-btn {
+    margin-top:0;
+  }
   
   .wrapper {
     display:flex;
-    flex-wrap:wrap;
-    width:100%;
-    padding:2rem;
-    align-items: center;
+    max-width:100%; 
+    
+    flex-direction: column;
+    box-sizing: border-box;  /* Include padding in total width calculation */
+
   }
 
   .nav-links {
     display:none;
   }
 
+
+  .link-btn {
+    margin:0;
+  }
   .menu-burger {
     display:block;
 
@@ -111,33 +158,40 @@ nav a:hover {
 
   .bottom-container {
     display: flex;
+    flex-direction: column;
+
     flex-wrap:wrap;
+    max-width:100%;
     justify-content: center;
 }
 
 .left-container {
   display:flex;
-
+  max-width:100%;
+  flex-direction: column;
   justify-content: center;
 }
 
 .left-bottom-container {
   display:flex;
-  flex-wrap:wrap;
+  flex-direction: column;
+
   align-items: center;
   justify-content: center;
-}
+  margin-right: 0;
 
-* {
-  margin: 0.2rem 0;
 }
 
 .links {
   display:flex;
-  flex-wrap:wrap;
-  justify-content: center;
   gap:1rem;
+}
 
+.bottom-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-links {
@@ -146,6 +200,11 @@ nav a:hover {
 
 .menu-burger {
   display: block;
+}
+
+.portfolio-project-btn {
+  width:100%;
+  margin-top:1rem;
 }
 
 }
