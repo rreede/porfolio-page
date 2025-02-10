@@ -54,7 +54,7 @@ export default function CheckoutView3() {
                         className={`rounded-md py-3 px-6 text-white ${paymentOption ? "bg-green-500" : "bg-gray-400 cursor-not-allowed"}`}
                         disabled={!paymentOption}
                     >
-                        To View 4
+                        Finalize Purchase
                     </button>
                 </Link>
             </div>
