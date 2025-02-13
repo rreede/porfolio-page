@@ -109,7 +109,7 @@ export default function ProductView() {
     return (
         <>
             <Header />
-            <div className="wrapper">
+            <div className="wrapper px-3">
                 <div className="product-details">
                     <div className="product-view-top-container flex justify-between gap-6">
                         {/* Display first product image */}
